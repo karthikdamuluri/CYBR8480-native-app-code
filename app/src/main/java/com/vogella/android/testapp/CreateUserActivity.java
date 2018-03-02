@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 
 public class CreateUserActivity extends AppCompatActivity {
+    boolean male = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,4 +22,20 @@ public class CreateUserActivity extends AppCompatActivity {
         String string = input.getText().toString();
         Toast.makeText(this, "User " + string + " created.", Toast.LENGTH_LONG).show();
     }
+
+    final RadioGroup radioGroup = (RadioGroup) findViewById(R.id.gender);
+    radioGroup.setOnCheckedChangeListener(new
+    RadioGroup.OnCheckedChangeListener() {
+    @Override
+      public void onCheckedChanged(RadioGroup group, int checkedId) {
+          switch (checkedId) {
+              case R.id.male:
+                  male = true;
+                  break;
+              case R.id.female:
+                  male = false;
+                  break;
+          }
+      }
+    });
 }
